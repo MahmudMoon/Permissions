@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Opetions"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.05">
+        <TextView
+            android:id="@+id/tv_appname"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Demo"
+            android:textStyle="bold"
+            android:textSize="25dp"
+            android:textColor="@color/colorAccent"
+            android:gravity="center"/>
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.075">
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="0dp"
+        android:layout_weight="0.5"
+        android:layout_height="match_parent"
+        android:text="Open Application"
+        />
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="0dp"
+        android:layout_weight="0.5"
+        android:layout_height="match_parent"
+        android:text="Manage Application" />
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.7"
+        android:orientation="vertical">
+        <TextView
+            android:text="NormalPermissions"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:background="@color/colorPrimary"
+            android:textColor="#fff"/>
+
+        <TextView
+            android:id="@+id/tv_nomal_permissons"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="DEMo\n Permissions"
+            android:layout_margin="8dp"/>
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Dangerious Permissions"
+            android:textColor="#fff"
+            android:background="@color/colorPrimary"
+            android:layout_marginTop="8dp"
+            android:gravity="center"/>
+        <TextView
+            android:id="@+id/tv_dangerios_permissions"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Demo\nNomnal Permiisions"
+            android:layout_margin="8dp"/>
+
+
+
+
+    </LinearLayout>
+
+
+</LinearLayout>
