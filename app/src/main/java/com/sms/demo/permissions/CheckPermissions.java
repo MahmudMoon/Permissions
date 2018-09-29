@@ -73,6 +73,7 @@ public class CheckPermissions {
     public ArrayList<String> checkNormalPermissions(String PackageName,PackageManager packageManager){
         ArrayList<String> noramlPermissionsGranted
                 = new ArrayList<>();
+        noramlPermissionsGranted.clear();
         for(int i=0;i<normalPermissions.length;i++){
             if(packageManager.checkPermission(normalPermissions[i],PackageName)==packageManager.PERMISSION_GRANTED){
                 noramlPermissionsGranted.add(normalPermissions[i]);
@@ -85,8 +86,9 @@ public class CheckPermissions {
 
     public ArrayList<String> checkDangeriousPermissions(String PackageName,PackageManager packageManager){
         ArrayList<String> dangeriousPermissionsGranted = new ArrayList<>();
+        dangeriousPermissionsGranted.clear();
         for (int j =0;j<dangeriousPermissions.length;j++){
-           if(packageManager.checkPermission(dangeriousPermissions[j],PackageName)==0){
+           if(packageManager.checkPermission(dangeriousPermissions[j],PackageName)==PackageManager.PERMISSION_GRANTED){
                dangeriousPermissionsGranted.add(dangeriousPermissions[j]);
            }
         }

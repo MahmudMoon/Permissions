@@ -24,6 +24,8 @@ public class MainActivity extends AppCompatActivity {
     private static final String TAG1 = "TEST";
     Button btn ;
     ListView listView;
+    PackageManager pm;
+    List<ApplicationInfo> packages;
     CheckPermissions checkPermissions;
     ArrayList<String> GrantednormalPermissions;
     ArrayList<String> DangeriousPermissionGranted;
@@ -44,11 +46,13 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-                final PackageManager pm = getPackageManager();
-                 List<ApplicationInfo> packages = pm.getInstalledApplications(PackageManager.GET_META_DATA);
-
                 Log.d(TAG, "Installed package :" + packages.get(position).packageName);
                 String PackageName = packages.get(position).packageName;
+
+
+                 GrantednormalPermissions = checkPermissions.checkNormalPermissions(PackageName,pm);
+                  DangeriousPermissionGranted = checkPermissions.checkDangeriousPermissions(PackageName,pm);
+
                 Intent intent = new Intent(MainActivity.this,Opetions.class);
                 intent.putExtra("packageName",PackageName);
                 intent.putStringArrayListExtra("normalPermissions",GrantednormalPermissions);
@@ -67,22 +71,22 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void init_functions() {
-        final PackageManager pm = getPackageManager();
-        List<ApplicationInfo> packages = pm.getInstalledApplications(PackageManager.GET_META_DATA);
+        pm = getPackageManager();
+        packages = pm.getInstalledApplications(PackageManager.GET_META_DATA);
         Log.d("TEST", Integer.toString(pm.checkPermission("android.permission.READ_EXTERNAL_STORAGE","com.example.moon.music_player")));
 
 
-        for (ApplicationInfo packageInfo : packages) {
-            GrantednormalPermissions = checkPermissions.checkNormalPermissions(packageInfo.packageName,pm);
-
-            Log.d(TAG,packageInfo.packageName + " = " + Integer.toString(GrantednormalPermissions.size()));
-        }
-
-        for (ApplicationInfo packageInfo : packages) {
-            DangeriousPermissionGranted = checkPermissions.checkDangeriousPermissions(packageInfo.packageName,pm);
-
-            Log.d(TAG1,packageInfo.packageName + " = " + Integer.toString(DangeriousPermissionGranted.size()));
-        }
+//        for (ApplicationInfo packageInfo : packages) {
+//            GrantednormalPermissions = checkPermissions.checkNormalPermissions(packageInfo.packageName,pm);
+//
+//            Log.d(TAG,packageInfo.packageName + " = " + Integer.toString(GrantednormalPermissions.size()));
+//        }
+//
+//        for (ApplicationInfo packageInfo : packages) {
+//            DangeriousPermissionGranted = checkPermissions.checkDangeriousPermissions(packageInfo.packageName,pm);
+//
+//            Log.d(TAG1,packageInfo.packageName + " = " + Integer.toString(DangeriousPermissionGranted.size()));
+//        }
 
         listView.setAdapter(new adapter(packages,getApplicationContext()));
 
