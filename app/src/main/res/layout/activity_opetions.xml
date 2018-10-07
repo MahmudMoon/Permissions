@@ -4,85 +4,77 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Opetions"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    tools:context=".Opetions">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="0.05">
+
         <TextView
             android:id="@+id/tv_appname"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="Demo"
-            android:textStyle="bold"
-            android:textSize="25dp"
-            android:textColor="@color/colorAccent"
-            android:gravity="center"/>
-    </LinearLayout>
-
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="0.075">
-
-    <Button
-        android:id="@+id/button"
-        android:layout_width="0dp"
-        android:layout_weight="0.5"
-        android:layout_height="match_parent"
-        android:text="Open Application"
-        />
-
-    <Button
-        android:id="@+id/button2"
-        android:layout_width="0dp"
-        android:layout_weight="0.5"
-        android:layout_height="match_parent"
-        android:text="Manage Application" />
-
-    </LinearLayout>
-
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="0.7"
-        android:orientation="vertical">
-        <TextView
-            android:text="NormalPermissions"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
             android:gravity="center"
+            android:text="Demo"
+            android:textColor="@color/colorAccent"
+            android:textSize="25dp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:id="@+id/button"
+            android:layout_width="0dp"
+            android:layout_weight="0.5"
+            android:text="Open Application"
+            android:layout_height="wrap_content"
+            android:layout_margin="4dp"/>
+        <Button
+            android:id="@+id/button2"
+            android:layout_width="0dp"
+            android:layout_weight="0.5"
+            android:text="Manage Application"
+            android:layout_margin="4dp"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:background="@color/colorPrimary"
-            android:textColor="#fff"/>
-
-        <TextView
-            android:id="@+id/tv_nomal_permissons"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="DEMo\n Permissions"
-            android:layout_margin="8dp"/>
-
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Dangerious Permissions"
+            android:gravity="center"
+            android:text="Resouces Used"
             android:textColor="#fff"
-            android:background="@color/colorPrimary"
-            android:layout_marginTop="8dp"
-            android:gravity="center"/>
-        <TextView
-            android:id="@+id/tv_dangerios_permissions"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:textSize="20dp"/>
+
+        <ListView
+            android:id="@+id/list_v"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Demo\nNomnal Permiisions"
-            android:layout_margin="8dp"/>
-
-
+            android:layout_height="742dp"
+            app:layout_constraintBottom_toBottomOf="@+id/textView2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView2"
+            app:layout_constraintVertical_bias="0.422" />
 
 
     </LinearLayout>

@@ -8,7 +8,7 @@ import android.widget.Button;
 
 public class Opening_window extends AppCompatActivity {
 
-    Button btnAllApps, btnBackgroudApps;
+    Button btnSystemApps, btnBackgroudApps,btnUserApps;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,10 +32,10 @@ public class Opening_window extends AppCompatActivity {
     }
 
     private void init_variable() {
-        btnAllApps.setOnClickListener(new View.OnClickListener() {
+        btnSystemApps.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Opening_window.this,MainActivity.class);
+                Intent intent = new Intent(Opening_window.this,SystemIntalledApps.class);
                 startActivity(intent);
             }
         });
@@ -47,10 +47,21 @@ public class Opening_window extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        btnUserApps.setOnClickListener(
+                new View.OnClickListener()
+                { @Override
+                 public void onClick(View v){
+                    Intent intent = new Intent(Opening_window.this,UserInstalledApps.class);
+                    startActivity(intent);
+                }
+               }
+        );
     }
 
     private void init_views() {
-        btnAllApps = (Button)findViewById(R.id.button4);
+        btnSystemApps = (Button)findViewById(R.id.button4);
         btnBackgroudApps = (Button)findViewById(R.id.button3);
+        btnUserApps = (Button)findViewById(R.id.button5);
     }
 }

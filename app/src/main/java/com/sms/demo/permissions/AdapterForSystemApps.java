@@ -1,6 +1,5 @@
 package com.sms.demo.permissions;
 
-import android.app.Application;
 import android.content.Context;
 import android.content.pm.ApplicationInfo;
 import android.view.LayoutInflater;
@@ -12,14 +11,14 @@ import android.widget.TextView;
 
 import java.util.List;
 
-public class adapter extends BaseAdapter {
+public class AdapterForSystemApps extends BaseAdapter {
     List<ApplicationInfo> pack;
     LayoutInflater inflater;
     Context context;
     TextView textView;
     ImageView imageView;
 
-    public adapter(List<ApplicationInfo> pack,Context context) {
+    public AdapterForSystemApps(List<ApplicationInfo> pack, Context context) {
         this.pack = pack;
         this.context = context;
         inflater = (LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -43,7 +42,7 @@ public class adapter extends BaseAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         View view = convertView;
-        view = inflater.inflate(R.layout.adapter,null);
+        view = inflater.inflate(R.layout.adapterforinstalledapps,null);
         textView = (TextView)view.findViewById(R.id.textView);
         imageView = (ImageView)view.findViewById(R.id.iv_image);
          String appName = pack.get(position).packageName;

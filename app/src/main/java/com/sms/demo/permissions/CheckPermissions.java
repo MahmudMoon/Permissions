@@ -9,10 +9,8 @@ public class CheckPermissions {
 
     String[] normalPermissions = {"android.permission.ACCESS_LOCATION_EXTRA_COMMANDS",
             "android.permission.ACCESS_NETWORK_STATE",
-            "android.permission.ACCESS_NOTIFICATION_POLICY",
             "android.permission.ACCESS_WIFI_STATE",
             "android.permission.BLUETOOTH_ADMIN",
-            "android.permission.BROADCAST_STICKY",
             "android.permission.CHANGE_NETWORK_STATE",
             "android.permission.CHANGE_WIFI_MULTICAST_STATE",
             "android.permission.CHANGE_WIFI_STATE",

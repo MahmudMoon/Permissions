@@ -3,26 +3,20 @@ package com.sms.demo.permissions;
 import android.content.Intent;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
-import android.net.Uri;
-import android.provider.Settings;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.Button;
 import android.widget.ListView;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.xml.validation.Validator;
-
-public class MainActivity extends AppCompatActivity {
+public class SystemIntalledApps extends AppCompatActivity {
 
     private static final String TAG = "Test";
     private static final String TAG1 = "TEST";
-    Button btn ;
     ListView listView;
     PackageManager pm;
     List<ApplicationInfo> packages;
@@ -32,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_syteminstalledapps);
         init_views();
         init_variables();
         init_functions();
@@ -53,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
                  GrantednormalPermissions = checkPermissions.checkNormalPermissions(PackageName,pm);
                   DangeriousPermissionGranted = checkPermissions.checkDangeriousPermissions(PackageName,pm);
 
-                Intent intent = new Intent(MainActivity.this,Opetions.class);
+                Intent intent = new Intent(SystemIntalledApps.this,Opetions.class);
                 intent.putExtra("packageName",PackageName);
                 intent.putStringArrayListExtra("normalPermissions",GrantednormalPermissions);
                 intent.putStringArrayListExtra("dangeriousPermissions",DangeriousPermissionGranted);
@@ -72,28 +66,31 @@ public class MainActivity extends AppCompatActivity {
 
     private void init_functions() {
         pm = getPackageManager();
-        packages = pm.getInstalledApplications(PackageManager.GET_META_DATA);
-        Log.d("TEST", Integer.toString(pm.checkPermission("android.permission.READ_EXTERNAL_STORAGE","com.example.moon.music_player")));
+        getUserInstalledApps();
 
-
-//        for (ApplicationInfo packageInfo : packages) {
-//            GrantednormalPermissions = checkPermissions.checkNormalPermissions(packageInfo.packageName,pm);
-//
-//            Log.d(TAG,packageInfo.packageName + " = " + Integer.toString(GrantednormalPermissions.size()));
-//        }
-//
-//        for (ApplicationInfo packageInfo : packages) {
-//            DangeriousPermissionGranted = checkPermissions.checkDangeriousPermissions(packageInfo.packageName,pm);
-//
-//            Log.d(TAG1,packageInfo.packageName + " = " + Integer.toString(DangeriousPermissionGranted.size()));
-//        }
-
-        listView.setAdapter(new adapter(packages,getApplicationContext()));
+        listView.setAdapter(new AdapterForSystemApps(packages,getApplicationContext()));
 
     }
 
-    private void init_variables() {
 
+    private void getUserInstalledApps() {
+        int flags = PackageManager.GET_META_DATA |
+                PackageManager.GET_SHARED_LIBRARY_FILES |
+                PackageManager.GET_UNINSTALLED_PACKAGES;
+
+        PackageManager pm = getPackageManager();
+        List<ApplicationInfo> applications = pm.getInstalledApplications(flags);
+        for (ApplicationInfo appInfo : applications) {
+            if ((appInfo.flags & ApplicationInfo.FLAG_SYSTEM) == 1) {
+                 packages.add(appInfo);
+            } else {
+               //User Inatalled Apps
+            }
+        }
+    }
+
+    private void init_variables() {
+        packages = new ArrayList<>();
         checkPermissions = new CheckPermissions();
         GrantednormalPermissions = new ArrayList<>();
         DangeriousPermissionGranted = new ArrayList<>();
